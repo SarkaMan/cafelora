@@ -20,3 +20,15 @@ document.querySelector('#root').innerHTML = render(
     <Footer />
   </div>,
 );
+
+//posluchač událostí na navigaci - rozbalování a zabalování navigace
+const menuBtn = document.querySelector('.nav-btn');
+const menu = document.querySelector('.rollout-nav');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('nav-closed');
+});
+
+menu.addEventListener('click', () => {
+  menu.classList.add('nav-closed');
+});
