@@ -13,7 +13,7 @@ document.querySelector('#root').innerHTML = render(
     <Header />
     <main>
       <Banner />
-      <Menu />
+      <Menu name="Doppio" image="" />
       <Gallery />
       <Contact />
     </main>
@@ -29,6 +29,7 @@ menuBtn.addEventListener('click', () => {
   menu.classList.toggle('nav-closed');
 });
 
+//schování navigace po kliknutí na odkaz "domů"
 menu.addEventListener('click', () => {
   menu.classList.add('nav-closed');
 });
