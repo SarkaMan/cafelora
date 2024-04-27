@@ -8,12 +8,17 @@ import { Gallery } from '../components/Gallery';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 
+const response = await fetch('http://localhost:4000/api/drinks'); //stáhnu data
+const json = await response.json();
+const drinks = json.data;
+console.log(drinks);
+
 document.querySelector('#root').innerHTML = render(
   <div className="page">
     <Header />
     <main>
       <Banner />
-      <Menu name="Doppio" image="" />
+      <Menu name="Doppio" image="" drinks={drinks} />
       <Gallery />
       <Contact />
     </main>

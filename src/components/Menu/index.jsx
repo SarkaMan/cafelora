@@ -1,6 +1,7 @@
 import { Drink } from '../Drink';
 
-export const Menu = ({ name }) => {
+export const Menu = ({ name, drinks }) => {
+  console.log(drinks);
   return (
     <section id="menu" className="menu">
       <div className="container">
@@ -10,13 +11,15 @@ export const Menu = ({ name }) => {
         </p>
         <div className="drinks-list">
           <div>
-            <Drink name={name} />
-          </div>
-          <div>
-            <Drink />
-          </div>
-          <div>
-            <Drink />
+            {drinks.map((drink) => (
+              <Drink
+                key={drink.id}
+                name={drink.name}
+                ordered={drink.ordered}
+                layers={drink.layers}
+                image={drink.image}
+              />
+            ))}
           </div>
 
           <div className="order-detail">

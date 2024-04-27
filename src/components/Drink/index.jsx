@@ -2,15 +2,19 @@ import './style.css';
 import { Layer } from '../Layer';
 
 export const Drink = ({ id, ordered, layers, name, image }) => {
+  console.log(layers);
+
   return (
     <div className="drink">
       <div className="drink__product">
         <div className="drink__cup">
-          <img src={image} />
+          <img src={`http://localhost:4000${image}`} />
         </div>
         <div className="drink__info">
           <h3>{name}</h3>
-          <Layer color="#feeeca" label="mléčná pěna" />
+          {layers.map((layer) => (
+            <Layer key={layer.label} color={layer.color} label={layer.label} />
+          ))}
         </div>
       </div>
       <form className="drink__controls">
