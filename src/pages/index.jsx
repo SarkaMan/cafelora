@@ -18,7 +18,7 @@ document.querySelector('#root').innerHTML = render(
     <Header />
     <main>
       <Banner />
-      <Menu name="Doppio" image="" drinks={drinks} />
+      <Menu drinks={drinks} />
       <Gallery />
       <Contact />
     </main>
@@ -37,4 +37,27 @@ menuBtn.addEventListener('click', () => {
 //schování navigace po kliknutí na odkaz "domů"
 menu.addEventListener('click', () => {
   menu.classList.add('nav-closed');
+});
+
+const formElm = document.querySelectorAll('form');
+formElm.forEach(async (form) => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = e.target.dataset.id;
+    const foundDrink = drinks.find(
+      (drink) => drink.id === Number(form.dataset.id),
+    );
+    const ordered = foundDrink.ordered;
+    console.log(foundDrink);
+    await fetch(`http://localhost:4000/api/drinks/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([
+        { op: 'replace', path: '/ordered', value: !ordered },
+      ]),
+    });
+    window.location.reload();
+  });
 });

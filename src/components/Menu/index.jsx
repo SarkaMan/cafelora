@@ -10,21 +10,20 @@ export const Menu = ({ name, drinks }) => {
           Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
         </p>
         <div className="drinks-list">
-          <div>
-            {drinks.map((drink) => (
-              <Drink
-                key={drink.id}
-                name={drink.name}
-                ordered={drink.ordered}
-                layers={drink.layers}
-                image={drink.image}
-              />
-            ))}
-          </div>
+          {drinks.map((drink) => (
+            <Drink
+              key={drink.id}
+              id={drink.id}
+              name={drink.name}
+              ordered={drink.ordered}
+              layers={drink.layers}
+              image={drink.image}
+            />
+          ))}
+        </div>
 
-          <div className="order-detail">
-            <a href="/order.html">Detail objednávky</a>
-          </div>
+        <div className="order-detail">
+          <a href="/order.html">Detail objednávky</a>
         </div>
       </div>
     </section>
